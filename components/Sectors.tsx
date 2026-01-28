@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef, useState } from "react";
 import {
   Factory,
   Zap,
@@ -21,6 +24,70 @@ const sectors = [
   { icon: Heart, name: "Santé" },
   { icon: ShoppingBag, name: "Biens de consommation" },
 ];
+
+interface SectorItem {
+  icon: React.ComponentType<{ className?: string }>;
+  name: string;
+}
+
+const SectorCards = ({ sectors }: { sectors: SectorItem[] }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(sectors.length).fill(false));
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            setVisibleCards((prev) => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const cards = containerRef.current?.querySelectorAll('[data-index]');
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [sectors.length]);
+
+  return (
+    <div ref={containerRef} className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
+      {sectors.map((sector, index) => (
+        <div
+          key={index}
+          data-index={index}
+          className={`group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-gold/50 hover:bg-white/10 transition-all duration-500 text-center ${
+            visibleCards[index]
+              ? 'opacity-100 translate-y-0 scale-100'
+              : 'opacity-0 translate-y-8 scale-95'
+          }`}
+          style={{ transitionDelay: `${index * 80}ms` }}
+        >
+          {/* Icon */}
+          <div className="w-14 h-14 mx-auto rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
+            <sector.icon className="h-7 w-7 text-gold" />
+          </div>
+
+          {/* Name */}
+          <p className="font-medium text-lg text-cream group-hover:text-gold transition-colors">
+            {sector.name}
+          </p>
+
+          {/* Hover glow */}
+          <div className="absolute inset-0 rounded-xl bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const Sectors = () => {
   return (
@@ -60,27 +127,7 @@ const Sectors = () => {
           </p>
         </div>
 
-       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6">
-          {sectors.map((sector, index) => (
-            <div
-              key={index}
-              className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-gold/50 hover:bg-white/10 transition-all duration-300 text-center"
-            >
-              {/* Icon */}
-              <div className="w-14 h-14 mx-auto rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
-                <sector.icon className="h-7 w-7 text-gold" />
-              </div>
-
-              {/* Name */}
-              <p className="font-medium text-lg text-cream group-hover:text-gold transition-colors">
-                {sector.name}
-              </p>
-
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-xl bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            </div>
-          ))}
-        </div>
+        <SectorCards sectors={sectors} />
 
         {/* Bottom text */}
         <div className="mt-16 text-center">

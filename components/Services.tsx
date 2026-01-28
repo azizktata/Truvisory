@@ -73,7 +73,17 @@ const services = [
 
 const Services = () => {
   const [activeService, setActiveService] = useState(services[0].id);
+  const [isAnimating, setIsAnimating] = useState(false);
   const currentService = services.find((s) => s.id === activeService) || services[0];
+
+  const handleServiceChange = (serviceId: string) => {
+    if (serviceId === activeService) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveService(serviceId);
+      setTimeout(() => setIsAnimating(false), 50);
+    }, 150);
+  };
 
   return (
     <section id="services" className="relative py-24 bg-muted/30 overflow-hidden">
@@ -104,7 +114,7 @@ const Services = () => {
           {services.map((service) => (
             <button
               key={service.id}
-              onClick={() => setActiveService(service.id)}
+              onClick={() => handleServiceChange(service.id)}
               className={`flex items-center gap-2 px-5 py-3 rounded-lg font-medium text-sm transition-all duration-300 ${
                 activeService === service.id
                   ? "bg-primary text-primary-foreground shadow-lg"
@@ -120,7 +130,13 @@ const Services = () => {
         {/* Active Service Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Service Info */}
-          <div className="order-2 lg:order-1">
+          <div
+            className={`order-2 lg:order-1 transition-all duration-300 ease-out ${
+              isAnimating
+                ? 'opacity-0 -translate-x-4'
+                : 'opacity-100 translate-x-0'
+            }`}
+          >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center">
                 <currentService.icon className="h-6 w-6 text-gold" />
@@ -166,7 +182,13 @@ const Services = () => {
 
           {/* Right: Visual Card */}
           <div className="order-1 lg:order-2">
-            <div className="relative">
+            <div
+              className={`relative transition-all duration-300 ease-out ${
+                isAnimating
+                  ? 'opacity-0 translate-x-4 scale-95'
+                  : 'opacity-100 translate-x-0 scale-100'
+              }`}
+            >
               {/* Main card */}
               <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
                 {/* Service icon large */}

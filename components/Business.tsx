@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, FileCheck, Users, Globe, Building2, ArrowRight } from "lucide-react";
 
@@ -23,6 +26,80 @@ const services = [
     description: "Accompagnement à l'internationalisation, optimisation fiscale et conseil transfrontalier au sein de l'Union Européenne.",
   },
 ];
+
+interface ServiceItem {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+const BusinessCards = ({ services }: { services: ServiceItem[] }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(new Array(services.length).fill(false));
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            setVisibleCards((prev) => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const cards = containerRef.current?.querySelectorAll('[data-index]');
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [services.length]);
+
+  return (
+    <div ref={containerRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {services.map((service, index) => (
+        <div
+          key={index}
+          data-index={index}
+          className={`group relative bg-card rounded-xl p-6 border border-border hover:border-gold/50 transition-all duration-500 hover-lift ${
+            visibleCards[index]
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: `${index * 100}ms` }}
+        >
+          {/* Icon */}
+          <div className="w-14 h-14 rounded-lg bg-primary/5 flex items-center justify-center mb-5 group-hover:bg-gold/10 transition-colors">
+            <service.icon className="h-7 w-7 text-gold" />
+          </div>
+
+          {/* Content */}
+          <h3 className="font-serif text-xl font-semibold text-primary mb-3">
+            {service.title}
+          </h3>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+            {service.description}
+          </p>
+
+          {/* Link */}
+          <a
+            href="#services"
+            className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold/80 transition-colors"
+          >
+            En savoir plus
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const Business = () => {
   return (
@@ -62,36 +139,7 @@ const Business = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="group relative bg-card rounded-xl p-6 border border-border hover:border-gold/50 transition-all duration-300 hover-lift"
-            >
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-lg bg-primary/5 flex items-center justify-center mb-5 group-hover:bg-gold/10 transition-colors">
-                <service.icon className="h-7 w-7 text-gold" />
-              </div>
-
-              {/* Content */}
-              <h3 className="font-serif text-xl font-semibold text-primary mb-3">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {service.description}
-              </p>
-
-              {/* Link */}
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold/80 transition-colors"
-              >
-                En savoir plus
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-          ))}
-        </div>
+        <BusinessCards services={services} />
 
         {/* CTA Section */}
         <div className="text-center">

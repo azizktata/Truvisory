@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Quote, Star } from "lucide-react";
 
@@ -26,6 +29,27 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const [ctaVisible, setCtaVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCtaVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative py-24 bg-background overflow-hidden">
       {/* Background elements */}
@@ -109,7 +133,14 @@ const Testimonials = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="relative">
+        <div
+          ref={ctaRef}
+          className={`relative transition-all duration-700 ease-out ${
+            ctaVisible
+              ? 'opacity-100 translate-y-0 scale-100'
+              : 'opacity-0 translate-y-12 scale-95'
+          }`}
+        >
           <div className="bg-gradient-to-br from-primary to-navy-medium rounded-3xl p-12 text-center overflow-hidden">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">

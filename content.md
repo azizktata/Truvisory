@@ -4,7 +4,7 @@
 
 ### Identité du cabinet
 
-TRUV est un cabinet indépendant d'audit, d'externalisation de processus et de conseil, accompagnant les entreprises dans leurs enjeux de conformité, de gouvernance et de performance financière.
+TRUVISORY est un cabinet indépendant d'audit, d'externalisation de processus et de conseil, accompagnant les entreprises dans leurs enjeux de conformité, de gouvernance et de performance financière.
 
 Le cabinet intervient principalement dans les domaines de l'audit & assurance, de la gouvernance d'entreprise et des systèmes de contrôle interne, en s'appuyant sur des approches conformes aux normes internationales, à l'environnement juridique local et aux attentes des utilisateurs de l'information financière.
 
@@ -12,7 +12,7 @@ Le cabinet intervient principalement dans les domaines de l'audit & assurance, d
 
 ## 2. Fondateur – Profil institutionnel
 
-**XYZ**
+Faîez REKIK
 *Expert-Comptable & Commissaire aux Comptes*
 
 Avec plus de 24 années d'expérience, le fondateur dispose de qualifications solides et d'une expertise reconnue dans les domaines suivants :

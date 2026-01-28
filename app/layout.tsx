@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Truvisory",
+  title: "TRUVISORY",
   description: "Cabinet d'expertise comptable et de commissariat aux comptes - Transparence, Fiabilité, Excellence",
 };
 

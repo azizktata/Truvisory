@@ -165,17 +165,17 @@ const Hero = () => {
           {/* Contact CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <Button variant="gold-outline" size="lg" asChild>
-              <a href="tel:+33123456789" className="flex items-center gap-2">
+              <a href="tel:+21670755910" className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
                 Appel direct
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
               <a
-                href="https://wa.me/33123456789"
+                href="https://wa.me/21653496484"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 text-gold"
               >
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp
