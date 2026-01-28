@@ -8,14 +8,14 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Téléphone",
-    value: "+33 1 23 45 67 89",
-    href: "tel:+33123456789",
+    value: "(+216) 70 755 910",
+    href: "tel:+21670755910",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
     value: "Discutons sur WhatsApp",
-    href: "https://wa.me/33123456789",
+    href: "https://wa.me/21653496484",
     external: true,
   },
   {
@@ -27,13 +27,22 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Adresse",
-    value: "Paris, France",
+    value: "Immeuble Laguna Square n° A6 cité les pins les berges du lac II - 1053 Tunis - Tunisie",
+    href: "https://maps.app.goo.gl/c75bLkmFBRURhEoZ9",
+    external: true,
   },
   {
-    icon: Clock,
-    label: "Horaires",
-    value: "Lun - Ven : 9h00 - 18h00",
+    icon: MapPin,
+    label: "Adresse Secondaire",
+    value: "12 rue Quetigny 93800 Epinay sur Seine île de France",
+    href: "https://maps.app.goo.gl/xShAHpEUKaKAXCQFA",
+    external: true,
   },
+  // {
+  //   icon: Clock,
+  //   label: "Horaires",
+  //   value: "Lun - Ven : 9h00 - 18h00",
+  // },
 ];
 
 const Contact = () => {
@@ -175,7 +184,7 @@ const Contact = () => {
                         value={formState.phone}
                         onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                        placeholder="+33 6 00 00 00 00"
+                        placeholder="+216 00 000 000"
                       />
                     </div>
                   </div>

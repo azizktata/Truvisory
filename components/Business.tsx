@@ -26,7 +26,7 @@ const services = [
 
 const Business = () => {
   return (
-    <section id="activities" className="relative py-24 pt-32 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 pt-32 bg-background overflow-hidden">
       {/* SVG Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -54,10 +54,10 @@ const Business = () => {
             <span className="text-gold">Performance Financière</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            TRUV est un cabinet indépendant d'audit, d'externalisation de processus et de conseil,
-            accompagnant les entreprises dans leurs enjeux stratégiques. Notre approche s'appuie sur
-            les normes internationales, l'environnement juridique local et les attentes des utilisateurs
-            de l'information financière.
+            TRUV est un cabinet indépendant d&apos;audit, d&apos;externalisation de processus et de conseil,
+            accompagnant les entreprises dans leurs enjeux stratégiques. Notre approche s&apos;appuie sur
+            les normes internationales, l&apos;environnement juridique local et les attentes des utilisateurs
+            de l&apos;information financière.
           </p>
         </div>
 

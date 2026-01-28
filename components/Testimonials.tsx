@@ -128,7 +128,7 @@ const Testimonials = () => {
 
             <div className="relative z-10">
               <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-cream mb-4">
-                Prêt à nous faire confiance ?
+                Prêt à transformer votre gestion financière ?
               </h3>
               <p className="text-cream/70 mb-8 max-w-xl mx-auto">
                 Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner.
@@ -136,14 +136,14 @@ const Testimonials = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="hero" size="xl" asChild>
-                  <a href="tel:+33123456789" className="flex items-center gap-2">
+                  <a href="tel:+21670755910" className="flex items-center gap-2">
                     <Phone className="h-5 w-5" />
-                    Appeler maintenant
+                    (+216) 70 755 910
                   </a>
                 </Button>
                 <Button variant="hero-outline" size="xl" asChild>
                   <a
-                    href="https://wa.me/33123456789"
+                    href="https://wa.me/21653496484"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"

@@ -9,21 +9,20 @@ const Header = () => {
 
   const navLinks = [
     { label: "Accueil", href: "#hero" },
-    { label: "Activités", href: "#activities" },
+    { label: "À propos", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Domaines d'expertise", href: "#sectors" },
-    { label: "À propos", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <span className="font-serif text-3xl font-bold tracking-tight text-primary">
-              TRUV
+            <span className="font-serif text-2xl font-bold tracking-tight text-primary">
+              TRUVISORY
             </span>
           </a>
 
@@ -42,16 +41,16 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="outline" size="default" asChild>
-              <a href="https://wa.me/33123456789" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            {/* <Button variant="outline" size="default" asChild>
+              <a href="https://wa.me/21653496484" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp
               </a>
-            </Button>
+            </Button> */}
             <Button variant="gold" size="default" asChild>
-              <a href="tel:+33123456789" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                Appeler
+             <a href="https://wa.me/21653496484" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp
               </a>
             </Button>
           </div>
@@ -86,13 +85,13 @@ const Header = () => {
               ))}
               <div className="flex flex-col gap-3 mt-4">
                 <Button variant="outline" size="lg" asChild>
-                  <a href="https://wa.me/33123456789" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <a href="https://wa.me/21653496484" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <MessageCircle className="h-4 w-4" />
                     WhatsApp
                   </a>
                 </Button>
                 <Button variant="gold" size="lg" asChild>
-                  <a href="tel:+33123456789" className="flex items-center gap-2">
+                  <a href="tel:+21670755910" className="flex items-center gap-2">
                     <Phone className="h-4 w-4" />
                     Appeler
                   </a>

@@ -66,7 +66,7 @@ const Hero = () => {
   }, [emblaApi]);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-hero-gradient overflow-visible pb-24">
+    <section id="hero" className="relative min-h-screen flex items-center bg-hero-gradient overflow-visible pb-24 pt-12">
       {/* Carousel Background */}
       <div className="absolute inset-0">
         <div ref={emblaRef} className="overflow-hidden h-full">
@@ -126,10 +126,13 @@ const Hero = () => {
           {/* Tagline */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="text-sm font-medium text-cream/80 tracking-wide uppercase">
-              Expert-Comptable & Commissaire aux Comptes
-            </span>
+            <span className="inline-block text-sm font-medium text-cream/80  tracking-wider">
+              Truvisory &#8212; Expert-Comptable & Commissaire aux Comptes
+          </span>
           </div>
+            {/* <span className="text-sm font-medium text-cream/80 tracking-wide uppercase">
+              Expert-Comptable & Commissaire aux Comptes
+            </span> */}
 
           {/* Dynamic heading based on carousel */}
           <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
@@ -161,13 +164,13 @@ const Hero = () => {
 
           {/* Contact CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <Button variant="gold" size="lg" asChild>
+            <Button variant="gold-outline" size="lg" asChild>
               <a href="tel:+33123456789" className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
                 Appel direct
               </a>
             </Button>
-            <Button variant="gold-outline" size="lg" asChild>
+            <Button variant="hero" size="lg" asChild>
               <a
                 href="https://wa.me/33123456789"
                 target="_blank"
@@ -209,7 +212,9 @@ const Hero = () => {
                     {item.value}
                   </div>
                   <div className="text-sm text-muted-foreground">{item.label}</div>
+
                 </div>
+                
               ))}
             </div>
           </div>

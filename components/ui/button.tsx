@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Premium variants for TRUV
-        gold: "bg-gold text-primary font-semibold hover:bg-gold/90 shadow-sm hover:shadow-md",
+        gold: "bg-gold text-white font-semibold hover:bg-gold/90 shadow-sm hover:shadow-md",
         "gold-outline": "border-2 border-gold text-gold bg-transparent hover:bg-gold hover:text-primary font-semibold",
         hero: "bg-cream text-primary font-semibold hover:bg-cream/90 shadow-sm hover:shadow-md px-8",
         "hero-outline": "border-2 border-cream/30 text-cream bg-transparent hover:bg-cream/10 font-medium px-8",
