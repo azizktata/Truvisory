@@ -99,11 +99,11 @@ const Services = () => {
           <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
             Nos Services
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
             Des solutions adaptées à{" "}
             <span className="text-gold">vos besoins</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             Une gamme complète de services pour accompagner les PME et TPE dans leur développement,
             leur conformité et leur performance financière.
           </p>

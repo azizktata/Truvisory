@@ -77,7 +77,7 @@ const SectorCards = ({ sectors }: { sectors: SectorItem[] }) => {
           </div>
 
           {/* Name */}
-          <p className="font-medium text-lg text-cream group-hover:text-gold transition-colors">
+          <p className="font-medium text-base sm:text-lg text-cream group-hover:text-gold transition-colors">
             {sector.name}
           </p>
 
@@ -117,11 +117,11 @@ const Sectors = () => {
           <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
             Domaines d'expertise
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-6">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-6">
             Des secteurs d'activité{" "}
             <span className="text-gold">variés</span>
           </h2>
-          <p className="text-lg text-cream/70 leading-relaxed">
+          <p className="text-base sm:text-lg text-cream/70 leading-relaxed">
             Nous accompagnons des entreprises issues de secteurs variés,
             en adaptant notre expertise aux spécificités de chaque industrie.
           </p>

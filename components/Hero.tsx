@@ -12,7 +12,7 @@ const slides = [
     image: "/images/hero-1.jpg",
   },
   {
-    title: "Conformité, Gouvernance, Performance",
+    title: "Votre partenaire de confiance",
     subtitle: "Accompagnement stratégique pour les entreprises ambitieuses",
     image: "/images/hero-2.jpg",
   },
@@ -66,7 +66,7 @@ const Hero = () => {
   }, [emblaApi]);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-hero-gradient overflow-visible pb-24 pt-12">
+    <section id="hero" className="relative min-h-screen flex items-center bg-hero-gradient overflow-visible pb-24 lg:pt-12">
       {/* Carousel Background */}
       <div className="absolute inset-0">
         <div ref={emblaRef} className="overflow-hidden h-full">
@@ -107,14 +107,14 @@ const Hero = () => {
       {/* Carousel Navigation */}
       <button
         onClick={scrollPrev}
-        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-cream/10 hover:bg-cream/20 text-cream transition-colors"
+        className="hidden sm:block absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-cream/10 hover:bg-cream/20 text-cream transition-colors"
         aria-label="Slide précédente"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-cream/10 hover:bg-cream/20 text-cream transition-colors"
+        className="hidden sm:block absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-cream/10 hover:bg-cream/20 text-cream transition-colors"
         aria-label="Slide suivante"
       >
         <ChevronRight className="h-6 w-6" />
@@ -124,25 +124,31 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
         <div className="max-w-4xl mx-auto text-center pt-20">
           {/* Tagline */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
+          <div className="flex sm:justify-center">
+
+          <div className="inline-flex items-center gap-2 px-2 sm:px-4 py-2 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="inline-block text-sm font-medium text-cream/80  tracking-wider">
-              Truvisory &#8212; Expert-Comptable & Commissaire aux Comptes
+            <span className="inline-block text-xs sm:text-sm font-medium text-cream/80  ">
+             Expert-Comptable & Commissaire aux Comptes
           </span>
+          </div>
           </div>
             {/* <span className="text-sm font-medium text-cream/80 tracking-wide uppercase">
               Expert-Comptable & Commissaire aux Comptes
             </span> */}
 
           {/* Dynamic heading based on carousel */}
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <h1 className="font-serife text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 " style={{ animationDelay: "0.1s" }}>
             {slides[selectedIndex].title.split(" ").slice(0, -2).join(" ")}
             <br />
             <span className="text-gold">{slides[selectedIndex].title.split(" ").slice(-2).join(" ")}</span>
           </h1>
+          {/* <h1 className="font-serif sm:hidden text-3xl  font-bold text-cream leading-tight mb-6 " style={{ animationDelay: "0.1s" }}>
+            {slides[selectedIndex].title}
+          </h1> */}
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          <p className="text-left sm:text-center text-base sm:text-lg md:text-xl text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed " style={{ animationDelay: "0.2s" }}>
             {slides[selectedIndex].subtitle}
           </p>
 
@@ -204,7 +210,7 @@ const Hero = () => {
       {/* Trust Indicators - Floating Container */}
       <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-30 px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-xl shadow-card border border-border p-8 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+          <div className="bg-card rounded-xl shadow-card border border-border p-8 " style={{ animationDelay: "0.5s" }}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {trustIndicators.map((item, index) => (
                 <div key={index} className="text-center">

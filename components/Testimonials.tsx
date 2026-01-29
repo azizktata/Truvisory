@@ -76,11 +76,11 @@ const Testimonials = () => {
           <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
             Témoignages
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
             La confiance de{" "}
             <span className="text-gold">nos clients</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             Découvrez les retours d'expérience de nos partenaires et clients satisfaits.
           </p>
         </div>
@@ -141,7 +141,7 @@ const Testimonials = () => {
               : 'opacity-0 translate-y-12 scale-95'
           }`}
         >
-          <div className="bg-gradient-to-br from-primary to-navy-medium rounded-3xl p-12 text-center overflow-hidden">
+          <div className="bg-gradient-to-br from-primary to-navy-medium rounded-3xl py-12 px-6 text-center overflow-hidden">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
               <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -158,10 +158,10 @@ const Testimonials = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gold/20 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10">
-              <h3 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-cream mb-4">
-                Prêt à transformer votre gestion financière ?
+              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-cream mb-4">
+                Encore des questions ?
               </h3>
-              <p className="text-cream/70 mb-8 max-w-xl mx-auto">
+              <p className="text-base sm:text-lg text-cream/70 mb-8 max-w-xl mx-auto">
                 Contactez-nous dès aujourd'hui pour discuter de vos besoins et découvrir comment nous pouvons vous accompagner.
               </p>
 

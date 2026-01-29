@@ -1,5 +1,6 @@
 import Business from "@/components/Business";
 import Contact from "@/components/Contact";
+import Founder from "@/components/Founder";
 import Hero from "@/components/Hero";
 import Sectors from "@/components/Sectors";
 import Services from "@/components/Services";
@@ -11,6 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <Business />
+        <Founder />
         <Sectors />
         <Services />
         <Values />

@@ -59,12 +59,12 @@ const Values = () => {
             <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
               Nos valeurs
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-cream">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream">
               Les principes qui guident{" "}
               <span className="text-gold">notre excellence</span>
             </h2>
           </div>
-          <p className="text-cream/70 lg:max-w-sm lg:text-right">
+          <p className="text-base sm:text-lg text-cream/70 lg:max-w-sm lg:text-right">
             Ces valeurs structurent notre relation avec nos partenaires et guident chacune de nos missions.
           </p>
         </div>

@@ -103,7 +103,7 @@ const BusinessCards = ({ services }: { services: ServiceItem[] }) => {
 
 const Business = () => {
   return (
-    <section id="about" className="relative py-24 pt-32 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 pt-32 mt-8 sm:mt-6 bg-background overflow-hidden">
       {/* SVG Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -126,15 +126,15 @@ const Business = () => {
           <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
             Présentation du cabinet
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
             Conformité, Gouvernance &{" "}
             <span className="text-gold">Performance Financière</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             TRUV est un cabinet indépendant d&apos;audit, d&apos;externalisation de processus et de conseil,
-            accompagnant les entreprises dans leurs enjeux stratégiques. Notre approche s&apos;appuie sur
-            les normes internationales, l&apos;environnement juridique local et les attentes des utilisateurs
-            de l&apos;information financière.
+            accompagnant les entreprises dans leurs enjeux stratégiques. 
+            {/* Notre approche s&apos;appuie sur les normes internationales, l&apos;environnement juridique local et les attentes des utilisateurs
+            de l&apos;information financière. */}
           </p>
         </div>
 

@@ -78,18 +78,18 @@ const Contact = () => {
           <span className="inline-block text-sm font-medium text-gold uppercase tracking-wider mb-4">
             Contact
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
             Parlons de votre{" "}
             <span className="text-gold">projet</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             Notre équipe est à votre écoute pour un premier échange sans engagement.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-5 gap-10 ">
           {/* Contact Info Cards */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4 ">
             {contactInfo.map((item, index) => (
               <div
                 key={index}
