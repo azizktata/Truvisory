@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif;
   --color-sidebar-ring: hsl(var(--sidebar-ring));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
@@ -48,105 +48,105 @@
 }
 
 :root {
-  /* Premium Navy & Gold palette */
-  --background: 210 20% 98%;
-  --foreground: 222 47% 11%;
+  /* Bold Deep Blue & Crimson palette */
+  --background: 220 20% 97%;
+  --foreground: 230 65% 10%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 230 65% 10%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover-foreground: 230 65% 10%;
 
-  /* Deep navy - trust & professionalism */
-  --primary: 222 47% 15%;
-  --primary-foreground: 45 30% 96%;
+  /* Deep indigo - power & authority */
+  --primary: 230 65% 15%;
+  --primary-foreground: 0 0% 98%;
 
-  /* Warm gold accent - excellence */
-  --secondary: 38 35% 55%;
-  --secondary-foreground: 222 47% 11%;
+  /* Striking crimson accent - energy & boldness */
+  --secondary: 0 85% 50%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 210 20% 96%;
-  --muted-foreground: 215 16% 47%;
+  --muted: 220 20% 94%;
+  --muted-foreground: 220 15% 45%;
 
-  /* Bronze accent for highlights */
-  --accent: 32 45% 45%;
+  /* Crimson accent for highlights */
+  --accent: 0 85% 50%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 222 47% 15%;
+  --border: 220 15% 88%;
+  --input: 220 15% 88%;
+  --ring: 0 85% 50%;
 
-  --radius: 0.375rem;
+  --radius: 0.5rem;
 
-  /* Custom tokens */
-  --gold: 38 35% 55%;
-  --gold-light: 40 40% 75%;
-  --navy-deep: 222 47% 11%;
-  --navy-medium: 222 35% 20%;
-  --cream: 45 30% 96%;
-  --slate-warm: 220 10% 40%;
+  /* Custom tokens - Bold palette */
+  --gold: 0 85% 50%;
+  --gold-light: 0 75% 65%;
+  --navy-deep: 230 65% 10%;
+  --navy-medium: 230 55% 18%;
+  --cream: 0 0% 98%;
+  --slate-warm: 220 15% 40%;
 
-  /* Gradients */
-  --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 35% 20%) 100%);
-  --gradient-gold: linear-gradient(135deg, hsl(38 35% 55%) 0%, hsl(32 45% 45%) 100%);
-  --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 20% 95%) 100%);
+  /* Gradients - more dramatic */
+  --gradient-hero: linear-gradient(135deg, hsl(230 65% 10%) 0%, hsl(230 55% 18%) 50%, hsl(230 45% 25%) 100%);
+  --gradient-gold: linear-gradient(135deg, hsl(0 85% 50%) 0%, hsl(350 80% 45%) 100%);
+  --gradient-subtle: linear-gradient(180deg, hsl(220 20% 97%) 0%, hsl(220 20% 94%) 100%);
 
-  /* Shadows */
-  --shadow-elegant: 0 4px 20px -4px hsl(222 47% 11% / 0.1);
-  --shadow-card: 0 8px 32px -8px hsl(222 47% 11% / 0.08);
-  --shadow-hover: 0 12px 40px -12px hsl(222 47% 11% / 0.15);
+  /* Shadows - bolder */
+  --shadow-elegant: 0 4px 24px -4px hsl(230 65% 10% / 0.12);
+  --shadow-card: 0 10px 40px -10px hsl(230 65% 10% / 0.1);
+  --shadow-hover: 0 16px 48px -12px hsl(230 65% 10% / 0.18);
 
   --sidebar-background: 0 0% 98%;
-  --sidebar-foreground: 240 5.3% 26.1%;
-  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-foreground: 230 65% 15%;
+  --sidebar-primary: 230 65% 10%;
   --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 240 4.8% 95.9%;
-  --sidebar-accent-foreground: 240 5.9% 10%;
-  --sidebar-border: 220 13% 91%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar-accent: 220 20% 94%;
+  --sidebar-accent-foreground: 230 65% 10%;
+  --sidebar-border: 220 15% 88%;
+  --sidebar-ring: 0 85% 50%;
 }
 
 .dark {
-  --background: 222 47% 8%;
-  --foreground: 45 30% 96%;
+  --background: 230 65% 6%;
+  --foreground: 0 0% 96%;
 
-  --card: 222 47% 11%;
-  --card-foreground: 45 30% 96%;
+  --card: 230 60% 10%;
+  --card-foreground: 0 0% 96%;
 
-  --popover: 222 47% 11%;
-  --popover-foreground: 45 30% 96%;
+  --popover: 230 60% 10%;
+  --popover-foreground: 0 0% 96%;
 
-  --primary: 45 30% 96%;
-  --primary-foreground: 222 47% 11%;
+  --primary: 0 0% 96%;
+  --primary-foreground: 230 65% 10%;
 
-  --secondary: 38 35% 55%;
-  --secondary-foreground: 45 30% 96%;
+  --secondary: 0 85% 55%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 222 35% 20%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 230 50% 15%;
+  --muted-foreground: 220 20% 65%;
 
-  --accent: 32 45% 45%;
-  --accent-foreground: 45 30% 96%;
+  --accent: 0 85% 55%;
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 62% 30%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 222 35% 20%;
-  --input: 222 35% 20%;
-  --ring: 38 35% 55%;
+  --border: 230 50% 18%;
+  --input: 230 50% 18%;
+  --ring: 0 85% 55%;
 
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
+  --sidebar-background: 230 65% 8%;
+  --sidebar-foreground: 0 0% 96%;
+  --sidebar-primary: 0 85% 55%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  --sidebar-accent: 230 50% 15%;
+  --sidebar-accent-foreground: 0 0% 96%;
+  --sidebar-border: 230 50% 18%;
+  --sidebar-ring: 0 85% 55%;
 }
 
 @layer base {
@@ -156,11 +156,13 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -212,6 +214,12 @@
 
   .bg-cream {
     background-color: hsl(var(--cream));
+  }
+
+  /* Bold accent text */
+  .text-accent-bold {
+    color: hsl(var(--accent));
+    font-weight: 600;
   }
 }
 

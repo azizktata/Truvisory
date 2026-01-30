@@ -8,18 +8,18 @@ import { Phone, MessageCircle, User, Briefcase, ChevronLeft, ChevronRight } from
 const slides = [
   {
     title: "L'excellence au service de votre réussite",
-    subtitle: "Cabinet indépendant d'audit, d'externalisation et de conseil",
-    image: "/images/hero-1.jpg",
+    subtitle: "Expertise comptable, audit et conseil stratégique. 24 ans d'expérience au service des PME et TPE françaises, avec une vision internationale.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
   },
   {
     title: "Votre partenaire de confiance",
-    subtitle: "Accompagnement stratégique pour les entreprises ambitieuses",
-    image: "/images/hero-2.jpg",
+    subtitle: "Solutions personnalisées en comptabilité, audit et conseil pour PME et TPE françaises.",
+    image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1920&q=80",
   },
   {
     title: "24 ans d'expertise à votre service",
     subtitle: "Approche rigoureuse conforme aux normes internationales",
-    image: "/images/hero-3.jpg",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
   },
 ];
 
@@ -71,20 +71,20 @@ const Hero = () => {
       <div className="absolute inset-0">
         <div ref={emblaRef} className="overflow-hidden h-full">
           <div className="flex h-full">
-            {slides.map((_, index) => (
+            {slides.map((slide, index) => (
               <div
                 key={index}
                 className="flex-[0_0_100%] min-w-0 relative h-full"
               >
-                {/* Placeholder gradient background - replace with actual images */}
+                {/* Background Image */}
                 <div
-                  className="absolute inset-0 bg-hero-gradient"
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700"
                   style={{
-                    backgroundImage: `linear-gradient(135deg, hsl(222 47% ${11 + index * 3}%) 0%, hsl(222 35% ${20 + index * 2}%) 100%)`,
+                    backgroundImage: `url(${slide.image})`,
                   }}
                 />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-navy-deep/60" />
+                {/* Dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/90 via-navy-deep/65 to-navy-medium/85" />
               </div>
             ))}
           </div>
@@ -92,7 +92,7 @@ const Hero = () => {
       </div>
 
       {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <div className="absolute inset-0 opacity-2 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
