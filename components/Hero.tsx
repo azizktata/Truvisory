@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, User, Briefcase, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, MessageCircle,  ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
@@ -126,7 +126,7 @@ const Hero = () => {
           {/* Tagline */}
           <div className="flex sm:justify-center">
 
-          <div className="inline-flex items-center gap-2 px-2 sm:px-4 py-2 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
+          <div className="inline-flex items-center gap-2 px-2 sm:px-4 py-2 mt-1 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             <span className="inline-block text-xs sm:text-sm font-medium text-cream/80  ">
              Expert-Comptable & Commissaire aux Comptes
@@ -138,7 +138,7 @@ const Hero = () => {
             </span> */}
 
           {/* Dynamic heading based on carousel */}
-          <h1 className="font-serife text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 " style={{ animationDelay: "0.1s" }}>
+          <h1 className="font-serif text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 max-w-4xl mx-auto" style={{ animationDelay: "0.1s" }}>
             {slides[selectedIndex].title.split(" ").slice(0, -2).join(" ")}
             <br />
             <span className="text-gold">{slides[selectedIndex].title.split(" ").slice(-2).join(" ")}</span>
