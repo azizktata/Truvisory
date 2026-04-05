@@ -8,7 +8,7 @@ import { Phone, MessageCircle,  ChevronLeft, ChevronRight } from "lucide-react";
 const slides = [
   {
     title: "L'excellence au service de votre réussite",
-    subtitle: "Expertise comptable, audit et conseil stratégique. 24 ans d'expérience au service des PME et TPE françaises, avec une vision internationale.",
+    subtitle: "Expertise comptable, audit et conseil stratégique au service des PME et TPE françaises, avec une vision internationale.",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
   },
   {
@@ -18,7 +18,7 @@ const slides = [
   },
   {
     title: "24 ans d'expertise à votre service",
-    subtitle: "Approche rigoureuse conforme aux normes internationales",
+    subtitle: "Approche rigoureuse conforme aux normes internationales IFRS, garantissant la fiabilité de vos états financiers.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
   },
 ];
@@ -123,16 +123,7 @@ const Hero = () => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
         <div className="max-w-4xl mx-auto text-center pt-20">
-          {/* Tagline */}
-          <div className="flex sm:justify-center">
-
-          <div className="inline-flex items-center gap-2 px-2 sm:px-4 py-2 mt-1 rounded-full border border-cream/20 bg-cream/5 mb-8 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="inline-block text-xs sm:text-sm font-medium text-cream/80  ">
-             Expert-Comptable & Commissaire aux Comptes
-          </span>
-          </div>
-          </div>
+    
             {/* <span className="text-sm font-medium text-cream/80 tracking-wide uppercase">
               Expert-Comptable & Commissaire aux Comptes
             </span> */}
