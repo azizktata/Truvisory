@@ -14,59 +14,72 @@ import {
 
 const services = [
   {
-    id: "audit",
+    id: "creation-entreprises",
     icon: FileCheck,
-    title: "Audit & Assurance",
-    subtitle: "Conformité et contrôle interne",
-    description: "Missions d'audit légal et contractuel conformes aux normes internationales, assurant la fiabilité de votre information financière.",
+    title: "Création d’entreprises",
+    subtitle: "Accompagnement complet pour la création de votre société",
+    description: "Creation d’entreprises : Accompagnement complet pour la création de votre société, de la conception à l’immatriculation, en passant par le choix de la structure juridique et fiscale.",
     features: [
-      "Externalisation de l'audit et de la comptabilité (normes françaises)",
-      "Mise en place et revue des systèmes de contrôle interne",
-      "Audit social préalable",
-      "Commissariat aux comptes",
-      "Audit contractuel et due diligence",
+      "Choix de la forme juridique",
+      "Choix du régime fiscal approprié",
+      "Domiciliation",
+      "Gestion de courriers",
     ],
   },
   {
-    id: "outsourcing",
+    id: "tenue-comptable",
     icon: Users,
-    title: "Outsourcing",
+    title: "Tenue comptable",
     subtitle: "Externalisation comptable et paie",
     description: "11 années d'expérience dans l'environnement français avec une équipe pluridisciplinaire d'Experts-Comptables et de spécialistes.",
     features: [
-      "Tenue et révision comptable",
-      "Bulletins de paie et DSN",
-      "Accès distant sécurisé aux serveurs",
-      "Revue croisée et validation managériale",
-      "Export comptable et fichiers SEPA",
+      "Procédure digitale sécurisée des flux de données entrants et sortants",
+      "Procédure inclusive d’imputation et de révision des comptes",
+      "Un interlocuteur permanent",
+      "Révision des comptes",
+      "Compilation des états financiers",
+      "Procès-verbal de l’assemblée générale et affectation du résultat",
     ],
   },
   {
-    id: "conseil",
+    id: "tax-advisory",
     icon: Briefcase,
-    title: "Conseil",
-    subtitle: "Accompagnement stratégique",
-    description: "Conseil en gouvernance, structuration et performance pour accompagner la croissance et la transformation de votre entreprise.",
+    title: "Tax advisory",
+    subtitle: "Optimisation fiscale et conformité",
+    description: "Conseil fiscal : Accompagnement personnalisé pour optimiser votre fiscalité, assurer votre conformité et maximiser vos opportunités de croissance.",
     features: [
-      "Accompagnement à la création de sociétés",
-      "Choix du régime fiscal et social optimal",
-      "Conseil en gouvernance et structuration",
-      "Accompagnement à la croissance",
-      "Analyse financière et évaluation",
+      "Etablissement des déclarations mensuelles, trimestrielles et annuelles",
+      "Assistance aux opérations de contrôle fiscal",
+      "Accompagnement lors des demandes de restitution",
+      "Ingénierie & optimisation fiscale",
+    ],
+  },
+  {
+    id: "social",
+    icon: Users,
+    title: "Social",
+    subtitle: "Gestion de la paie et des ressources humaines",
+    description: "Gestion complète de la paie et des ressources humaines, avec un service de proximité et une expertise en droit du travail pour assurer la conformité et le bien-être de vos employés.",
+    features: [
+      "Etablissement des bulletins de paie",
+      "Ouverture et paramétrage du dossier",
+      "Conseil en droit de travail et conventions collectives",
+      "Audit social",
+      "Prise de contact avec les organismes sociaux",
+      "Employeur de référence (EOR : Employer of Record)",
     ],
   },
   {
     id: "international",
     icon: Globe,
     title: "International",
-    subtitle: "Fiscalité et expansion",
+    subtitle: "Expansion et conformité internationale",
     description: "Accompagnement à l'internationalisation au sein de l'Union Européenne avec une expertise en fiscalité transfrontalière.",
     features: [
-      "Accompagnement à l'internationalisation (UE)",
+      "Conseil en implantation à l’international",
       "Optimisation fiscale internationale",
-      "Structuration internationale",
-      "Conseil transfrontalier",
-      "Due diligences internationales",
+      "Conformité réglementaire transfrontalière",
+      "Accompagnement à l’internationalisation",
     ],
   },
 ];
@@ -198,41 +211,10 @@ const Services = () => {
 
                 {/* Stats or highlights */}
                 <div className="space-y-4">
-                  {currentService.id === "outsourcing" && (
-                    <>
-                      <div className="flex items-center justify-between py-3 border-b border-border">
-                        <span className="text-muted-foreground">Expérience</span>
-                        <span className="font-serif text-xl font-bold text-gold">11 ans</span>
-                      </div>
-                      <div className="flex items-center justify-between py-3 border-b border-border">
-                        <span className="text-muted-foreground">Équipe</span>
-                        <span className="font-serif text-xl font-bold text-primary">Pluridisciplinaire</span>
-                      </div>
-                      <div className="flex items-center justify-between py-3">
-                        <span className="text-muted-foreground">Sécurité</span>
-                        <span className="font-serif text-xl font-bold text-primary">100%</span>
-                      </div>
-                    </>
-                  )}
-                  {currentService.id === "audit" && (
-                    <>
-                      <div className="flex items-center justify-between py-3 border-b border-border">
-                        <span className="text-muted-foreground">Normes</span>
-                        <span className="font-serif text-xl font-bold text-gold">IFRS</span>
-                      </div>
-                      <div className="flex items-center justify-between py-3 border-b border-border">
-                        <span className="text-muted-foreground">Expérience</span>
-                        <span className="font-serif text-xl font-bold text-primary">24 ans</span>
-                      </div>
-                      <div className="flex items-center justify-between py-3">
-                        <span className="text-muted-foreground">Conformité</span>
-                        <span className="font-serif text-xl font-bold text-primary">100%</span>
-                      </div>
-                    </>
-                  )}
-                  {currentService.id === "conseil" && (
-                    <>
-                      <div className="flex items-center justify-between py-3 border-b border-border">
+                   {
+                    currentService.id === "creation-entreprises" && (
+                      <>
+                         <div className="flex items-center justify-between py-3 border-b border-border">
                         <span className="text-muted-foreground">Approche</span>
                         <span className="font-serif text-xl font-bold text-gold">Sur-mesure</span>
                       </div>
@@ -243,6 +225,56 @@ const Services = () => {
                       <div className="flex items-center justify-between py-3">
                         <span className="text-muted-foreground">Expertise</span>
                         <span className="font-serif text-xl font-bold text-primary">24 ans</span>
+                      </div>
+                      </>
+                    )
+                   }
+                  
+                  {currentService.id === "tenue-comptable" && (
+                    <>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Clients actifs</span>
+                        <span className="font-serif text-xl font-bold text-gold">150+</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Taux de conformité</span>
+                        <span className="font-serif text-xl font-bold text-primary">100%</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3">
+                        <span className="text-muted-foreground">Réactivité</span>
+                        <span className="font-serif text-xl font-bold text-primary">24h</span>
+                      </div>
+                    </>
+                  )}
+                  {currentService.id === "tax-advisory" && (
+                    <>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Optimisations réalisées</span>
+                        <span className="font-serif text-xl font-bold text-gold">200+</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Taux de réussite</span>
+                        <span className="font-serif text-xl font-bold text-primary">95%</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3">
+                        <span className="text-muted-foreground">Économies moyennes</span>
+                        <span className="font-serif text-xl font-bold text-primary">15%</span>
+                      </div>  
+                    </>
+                  )}
+                  {currentService.id === "social" && (
+                    <>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Bulletins de paie</span>
+                        <span className="font-serif text-xl font-bold text-gold">1000+</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3 border-b border-border">
+                        <span className="text-muted-foreground">Taux de satisfaction</span>
+                        <span className="font-serif text-xl font-bold text-primary">98%</span>
+                      </div>
+                      <div className="flex items-center justify-between py-3">
+                        <span className="text-muted-foreground">Délai de traitement</span>
+                        <span className="font-serif text-xl font-bold text-primary">48h</span>
                       </div>
                     </>
                   )}

@@ -37,35 +37,13 @@ const Founder = () => {
               {/* Main image container */}
               <div className="relative bg-gradient-to-br from-primary to-navy-medium rounded-2xl aspect-[4/5] overflow-hidden">
                 {/* Placeholder pattern - replace with actual image */}
-                <div className="absolute inset-0 opacity-10">
-                  <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id="founder-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <circle cx="20" cy="20" r="1.5" fill="white" />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#founder-pattern)" />
-                  </svg>
-                </div>
+              
 
                 {/* Initials placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="font-serif text-8xl md:text-9xl font-bold text-cream/20">
                     FR
                   </span>
-                </div>
-              </div>
-
-              {/* Floating card - Experience */}
-              <div className="absolute -bottom-6 -right-6 bg-card rounded-xl p-5 shadow-lg border border-border">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center">
-                    <Award className="h-7 w-7 text-gold" />
-                  </div>
-                  <div>
-                    <div className="font-serif text-3xl font-bold text-gold">24+</div>
-                    <div className="text-sm text-muted-foreground">Années d&apos;expérience</div>
-                  </div>
                 </div>
               </div>
 
