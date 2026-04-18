@@ -3,44 +3,21 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle,  ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import type { HeroSection } from "@/lib/wp-types";
 
-const slides = [
-  {
-    title: "L'excellence au service de votre réussite",
-    subtitle: "Expertise comptable, audit et conseil stratégique au service des PME et TPE françaises, avec une vision internationale.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
-  },
-  {
-    title: "Votre partenaire de confiance",
-    subtitle: "Solutions personnalisées en comptabilité, audit et conseil pour PME et TPE françaises.",
-    image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1920&q=80",
-  },
-  {
-    title: "24 ans d'expertise à votre service",
-    subtitle: "Approche rigoureuse conforme aux normes internationales IFRS, garantissant la fiabilité de vos états financiers.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
-  },
-];
+interface HeroProps {
+  data: HeroSection;
+  phone: string;
+  whatsapp: string;
+}
 
-const trustIndicators = [
-  { value: "24", label: "Années d'expérience" },
-  { value: "11", label: "Ans en outsourcing" },
-  { value: "IFRS", label: "Normes internationales" },
-  { value: "100%", label: "Confidentialité" },
-];
-
-const Hero = () => {
+const Hero = ({ data, phone, whatsapp }: HeroProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -49,12 +26,9 @@ const Hero = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
     };
 
-    // Set initial index
     setSelectedIndex(emblaApi.selectedScrollSnap());
-
     emblaApi.on("select", handleSelect);
 
-    // Auto-play
     const autoplay = setInterval(() => {
       emblaApi.scrollNext();
     }, 6000);
@@ -65,25 +39,23 @@ const Hero = () => {
     };
   }, [emblaApi]);
 
+  const currentSlide = data.slides[selectedIndex] ?? data.slides[0];
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center bg-hero-gradient overflow-visible pb-24 lg:pt-12">
       {/* Carousel Background */}
       <div className="absolute inset-0">
         <div ref={emblaRef} className="overflow-hidden h-full">
           <div className="flex h-full">
-            {slides.map((slide, index) => (
+            {data.slides.map((slide, index) => (
               <div
                 key={index}
                 className="flex-[0_0_100%] min-w-0 relative h-full"
               >
-                {/* Background Image */}
                 <div
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700"
-                  style={{
-                    backgroundImage: `url(${slide.image})`,
-                  }}
+                  style={{ backgroundImage: `url(${slide.image})` }}
                 />
-                {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/90 via-navy-deep/75 to-navy-medium/85" />
               </div>
             ))}
@@ -123,53 +95,27 @@ const Hero = () => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
         <div className="max-w-4xl mx-auto text-center pt-20">
-    
-            {/* <span className="text-sm font-medium text-cream/80 tracking-wide uppercase">
-              Expert-Comptable & Commissaire aux Comptes
-            </span> */}
-
-          {/* Dynamic heading based on carousel */}
           <h1 className="font-serif text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 max-w-4xl mx-auto" style={{ animationDelay: "0.1s" }}>
-            {slides[selectedIndex].title.split(" ").slice(0, -2).join(" ")}
+            {currentSlide.title.split(" ").slice(0, -2).join(" ")}
             <br />
-            <span className="text-gold">{slides[selectedIndex].title.split(" ").slice(-2).join(" ")}</span>
+            <span className="text-gold">{currentSlide.title.split(" ").slice(-2).join(" ")}</span>
           </h1>
-          {/* <h1 className="font-serif sm:hidden text-3xl  font-bold text-cream leading-tight mb-6 " style={{ animationDelay: "0.1s" }}>
-            {slides[selectedIndex].title}
-          </h1> */}
 
-          {/* Subheading */}
-          <p className="text-left sm:text-center text-base sm:text-lg md:text-xl text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed " style={{ animationDelay: "0.2s" }}>
-            {slides[selectedIndex].subtitle}
+          <p className="text-left sm:text-center text-base sm:text-lg md:text-xl text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.2s" }}>
+            {currentSlide.subtitle}
           </p>
-
-          {/* CTA Buttons - 3 CTAs as specified */}
-          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <Button variant="hero" size="xl" asChild>
-              <a href="#about" className="flex items-center gap-2">
-                <User className="h-5 w-5" />
-                Découvrir le fondateur
-              </a>
-            </Button>
-            <Button variant="hero-outline" size="xl" asChild>
-              <a href="#services" className="flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
-                Nos services
-              </a>
-            </Button>
-          </div> */}
 
           {/* Contact CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <Button variant="gold-outline" size="lg" asChild>
-              <a href="tel:+21670755910" className="flex items-center gap-2">
+              <a href={phone} className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
                 Appel direct
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
               <a
-                href="https://wa.me/21653496484"
+                href={whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gold"
@@ -182,7 +128,7 @@ const Hero = () => {
 
           {/* Carousel Dots */}
           <div className="flex justify-center gap-2">
-            {slides.map((_, index) => (
+            {data.slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => emblaApi?.scrollTo(index)}
@@ -198,33 +144,23 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Trust Indicators - Floating Container */}
+      {/* Trust Indicators */}
       <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-30 px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-xl shadow-card border border-border p-8 " style={{ animationDelay: "0.5s" }}>
+          <div className="bg-card rounded-xl shadow-card border border-border p-8" style={{ animationDelay: "0.5s" }}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {trustIndicators.map((item, index) => (
+              {data.trust_indicators.map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="font-serif text-3xl md:text-4xl font-bold text-gold mb-1">
                     {item.value}
                   </div>
                   <div className="text-sm text-muted-foreground">{item.label}</div>
-
                 </div>
-                
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      {/* <div className="absolute bottom-32 left-1/2 -translate-x-1/2 animate-bounce z-10">
-        <a href="#activities" className="flex flex-col items-center gap-2 text-cream/40 hover:text-cream/60 transition-colors">
-          <span className="text-xs uppercase tracking-widest">Découvrir</span>
-          <ArrowDown className="h-5 w-5" />
-        </a>
-      </div> */}
     </section>
   );
 };
