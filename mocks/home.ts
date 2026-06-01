@@ -17,7 +17,7 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
         {
           title: "Votre partenaire de confiance",
           subtitle:
-            "Solutions personnalisées en comptabilité, audit et conseil pour PME et TPE françaises.",
+            "Solutions personnalisées en comptabilité, audit, conseil et représentation fiscale (TRE) pour PME, TPE et entreprises étrangères.",
           image:
             "https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1920&q=80",
         },
@@ -62,7 +62,7 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
         {
           name: "International",
           subtitle:
-            "Accompagnement à l'internationalisation, optimisation fiscale et conseil transfrontalier au sein de l'Union Européenne.",
+            "Accompagnement TRE (Représentant Fiscal Étranger), internationalisation et conseil fiscal transfrontalier au sein de l'Union Européenne.",
         },
       ],
     },
@@ -77,7 +77,7 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
         { label: "Audit et assurance" },
         { label: "Conseil stratégique et financier" },
         { label: "Analyse financière et évaluation" },
-        { label: "Fiscalité internationale" },
+        { label: "Fiscalité internationale & TRE" },
         { label: "Due diligences" },
         { label: "Corporate & Business Advisory" },
       ],
@@ -188,18 +188,20 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
         {
           id: "international",
           title: "International",
-          subtitle: "Expansion et conformité internationale",
+          subtitle: "Expansion, conformité et représentation fiscale",
           description:
-            "Accompagnement à l'internationalisation au sein de l'Union Européenne avec une expertise en fiscalité transfrontalière.",
+            "Accompagnement à l'internationalisation au sein de l'Union Européenne avec une expertise en fiscalité transfrontalière et en représentation fiscale (TRE) pour les entreprises étrangères opérant en France.",
           features: [
-            "Conseil en implantation à l'international",
-            "Optimisation fiscale internationale",
-            "Conformité réglementaire transfrontalière",
-            "Accompagnement à l'internationalisation",
+            "Accompagnement TRE — Représentant Fiscal Étranger en France",
+            "Immatriculation TVA et obligations déclaratives pour entités non-résidentes",
+            "Conseil en implantation et structuration à l'international",
+            "Optimisation fiscale internationale et prix de transfert",
+            "Conformité réglementaire transfrontalière (UE)",
+            "Accompagnement à l'internationalisation et développement à l'export",
           ],
           stats: [
             { label: "Zone", value: "Union Européenne" },
-            { label: "Fiscalité", value: "Optimisée" },
+            { label: "TRE & TVA", value: "Non-résidents" },
             { label: "Conseil", value: "Transfrontalier" },
           ],
         },

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 
@@ -20,9 +21,10 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-bold tracking-tight text-primary">
+            <Image src="/TRUVISORY-logo.jpeg" alt="TRUVISORY Logo" width={180} height={48} className="h-12 w-auto" style={{ mixBlendMode: "multiply" }} />
+            {/* <span className="font-serif text-2xl font-bold tracking-tight text-primary">
               TRUVISORY
-            </span>
+            </span> */}
           </a>
 
           {/* Desktop Navigation */}
