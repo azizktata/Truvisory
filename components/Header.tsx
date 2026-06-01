@@ -21,7 +21,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <Image src="/TRUVISORY-logo.jpeg" alt="TRUVISORY Logo" width={180} height={48} className="h-12 w-auto" style={{ mixBlendMode: "multiply" }} />
+            <Image src="/TRUVISORY-logo.png" alt="TRUVISORY Logo" width={180} height={48} className="h-12 w-auto" style={{ mixBlendMode: "multiply" }} />
             {/* <span className="font-serif text-2xl font-bold tracking-tight text-primary">
               TRUVISORY
             </span> */}
