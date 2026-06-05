@@ -58,10 +58,12 @@ const Footer = () => {
             <h4 className="text-sm font-semibold uppercase tracking-wide text-cream/80">
               Informations légales
             </h4>
-            <p className="mt-4 text-sm text-cream/60 leading-relaxed">
-              Expert-Comptable inscrit à l’Ordre des Experts-Comptables<br />
-              Commissaire aux Comptes
-            </p>
+            <address className="mt-4 not-italic">
+              <p className="text-sm text-cream/60 leading-relaxed">
+                Expert-Comptable inscrit à l’Ordre des Experts-Comptables<br />
+                Commissaire aux Comptes
+              </p>
+            </address>
           </div>
 
         </div>

@@ -84,9 +84,9 @@ export const metadata: Metadata = {
       "Cabinet indépendant d'audit, d'externalisation comptable et de conseil stratégique. Fiscalité internationale, TRE, accompagnement PME et TPE.",
     images: [
       {
-        url: "/TRUVISORY-logo.jpeg",
-        width: 1089,
-        height: 693,
+        url: "/TRUVISORY-logo.png",
+        width: 626,
+        height: 398,
         alt: "TRUVISORY — Cabinet d'expertise comptable",
       },
     ],
@@ -96,16 +96,26 @@ export const metadata: Metadata = {
     title: "TRUVISORY — Expert-Comptable & Commissaire aux Comptes",
     description:
       "Cabinet indépendant d'audit, d'externalisation comptable et de conseil stratégique. Fiscalité internationale, TRE, accompagnement PME et TPE.",
-    images: ["/TRUVISORY-logo.jpeg"],
+    images: ["/TRUVISORY-logo.png"],
   },
   icons: {
     icon: "/favicon.ico",
   },
+  // TODO: Add Google Search Console verification once property is created
+  // verification: { google: "YOUR_GSC_VERIFICATION_CODE" },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
+      name: "TRUVISORY",
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${BASE_URL}/#organization` },
+    },
     {
       "@type": "Organization",
       "@id": `${BASE_URL}/#organization`,
@@ -113,7 +123,7 @@ const jsonLd = {
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/TRUVISORY-logo.jpeg`,
+        url: `${BASE_URL}/TRUVISORY-logo.png`,
       },
       contactPoint: {
         "@type": "ContactPoint",
@@ -176,6 +186,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

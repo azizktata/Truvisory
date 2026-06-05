@@ -206,11 +206,15 @@ const Contact = ({ data }: ContactProps) => {
                         {...form.register("name")}
                         type="text"
                         id="name"
+                        autoComplete="name"
+                        aria-required="true"
+                        aria-describedby={form.formState.errors.name ? "name-error" : undefined}
+                        aria-invalid={!!form.formState.errors.name}
                         className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
                         placeholder="Votre nom"
                       />
                       {form.formState.errors.name && (
-                        <p className="mt-1 text-xs text-destructive">{form.formState.errors.name.message}</p>
+                        <p id="name-error" role="alert" className="mt-1 text-xs text-destructive">{form.formState.errors.name.message}</p>
                       )}
                     </div>
                     <div>
@@ -221,6 +225,7 @@ const Contact = ({ data }: ContactProps) => {
                         {...form.register("phone")}
                         type="tel"
                         id="phone"
+                        autoComplete="tel"
                         className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
                         placeholder="+216 00 000 000"
                       />
@@ -235,11 +240,15 @@ const Contact = ({ data }: ContactProps) => {
                       {...form.register("email")}
                       type="email"
                       id="email"
+                      autoComplete="email"
+                      aria-required="true"
+                      aria-describedby={form.formState.errors.email ? "email-error" : undefined}
+                      aria-invalid={!!form.formState.errors.email}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
                       placeholder="votre@email.com"
                     />
                     {form.formState.errors.email && (
-                      <p className="mt-1 text-xs text-destructive">{form.formState.errors.email.message}</p>
+                      <p id="email-error" role="alert" className="mt-1 text-xs text-destructive">{form.formState.errors.email.message}</p>
                     )}
                   </div>
 
@@ -251,11 +260,15 @@ const Contact = ({ data }: ContactProps) => {
                       {...form.register("message")}
                       id="message"
                       rows={4}
+                      autoComplete="off"
+                      aria-required="true"
+                      aria-describedby={form.formState.errors.message ? "message-error" : undefined}
+                      aria-invalid={!!form.formState.errors.message}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none"
                       placeholder="Décrivez votre projet ou vos besoins..."
                     />
                     {form.formState.errors.message && (
-                      <p className="mt-1 text-xs text-destructive">{form.formState.errors.message.message}</p>
+                      <p id="message-error" role="alert" className="mt-1 text-xs text-destructive">{form.formState.errors.message.message}</p>
                     )}
                   </div>
 
