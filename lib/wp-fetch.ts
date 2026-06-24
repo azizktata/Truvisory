@@ -28,7 +28,7 @@ export const fetchLandingPage = cache(
     try {
       const res = await fetch(
         `${BASE_URL}/${POST_TYPE}?slug=landingpage&_fields=acf,slug,title&acf_format=standard`,
-        { next: { revalidate: 3600 } }
+        { next: { revalidate: 3600, tags: ["landingpage"] } }
       );
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: WPPostResponse<LandingPageACF>[] = await res.json();
