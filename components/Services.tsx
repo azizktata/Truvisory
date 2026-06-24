@@ -172,6 +172,26 @@ const Services = ({ data }: ServicesProps) => {
             </div>
           </div>
         </div>
+
+        {/*
+          SEO: the interactive tabs above only render the active service. Render the
+          full content of every service here (visually hidden) so search engines can
+          crawl all service descriptions and features, not just the first tab.
+        */}
+        <div className="sr-only">
+          {data.services.map((service) => (
+            <article key={service.id}>
+              <h3>{service.title}</h3>
+              <p>{service.subtitle}</p>
+              <p>{service.description}</p>
+              <ul>
+                {service.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

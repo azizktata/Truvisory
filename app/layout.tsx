@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://truvisory.fr";
+const BASE_URL = "https://www.truvisory.fr";
 
 export const viewport: Viewport = {
   themeColor: "#1a1a2e",
@@ -158,7 +158,14 @@ const jsonLd = {
       description:
         "Cabinet indépendant d'audit, d'externalisation de processus et de conseil. Expert-comptable & commissaire aux comptes, fiscalité internationale et représentation fiscale étrangère (TRE).",
       priceRange: "Sur devis",
-      areaServed: ["TN", "FR", "EU"],
+      areaServed: [
+        { "@type": "Country", name: "France" },
+        { "@type": "Country", name: "Tunisie" },
+        { "@type": "AdministrativeArea", name: "Union Européenne" },
+        { "@type": "City", name: "Tunis" },
+        { "@type": "City", name: "Épinay-sur-Seine" },
+        { "@type": "AdministrativeArea", name: "Île-de-France" },
+      ],
       knowsAbout: [
         "Audit légal",
         "Comptabilité externalisée",
@@ -168,6 +175,57 @@ const jsonLd = {
         "IFRS",
         "Due diligence",
       ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Services d'expertise comptable",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Création d'entreprise",
+              description:
+                "Accompagnement à la création de société : choix de la forme juridique, régime fiscal, immatriculation et domiciliation.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Tenue comptable & comptabilité externalisée",
+              description:
+                "Externalisation de la comptabilité et de la paie, révision des comptes et établissement des états financiers (IFRS).",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Conseil fiscal (Tax advisory)",
+              description:
+                "Déclarations fiscales, optimisation et ingénierie fiscale, assistance au contrôle fiscal.",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Gestion de la paie & audit social",
+              description:
+                "Bulletins de paie, conseil en droit du travail, audit social et solution Employer of Record (EOR).",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Représentant Fiscal Étranger (TRE) & fiscalité internationale",
+              description:
+                "Représentation fiscale en France pour entreprises étrangères, immatriculation TVA des non-résidents, prix de transfert et conformité transfrontalière au sein de l'Union Européenne.",
+            },
+          },
+        ],
+      },
       founder: {
         "@type": "Person",
         name: "Faîez REKIK",

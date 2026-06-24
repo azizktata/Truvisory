@@ -40,7 +40,7 @@ const Founder = ({ data }: FounderProps) => {
                 {photoUrl ? (
                   <Image
                     src={photoUrl}
-                    alt={data.name}
+                    alt={`${data.name} — ${data.title}, fondateur du cabinet TRUVISORY`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"

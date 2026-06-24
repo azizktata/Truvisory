@@ -99,11 +99,18 @@ const Hero = ({ data, phone, whatsapp }: HeroProps) => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
         <div className="max-w-4xl mx-auto text-center pt-20">
-          <h1 className="font-serif text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 max-w-4xl mx-auto" style={{ animationDelay: "0.1s" }}>
+          {/* Single, stable, keyword-rich H1 for SEO (visually hidden; design unchanged) */}
+          <h1 className="sr-only">
+            TRUVISORY — Expert-Comptable &amp; Commissaire aux Comptes : audit légal,
+            comptabilité externalisée, gestion de paie et fiscalité internationale (représentant
+            fiscal étranger / TVA non-résident) pour PME et TPE en France et en Tunisie.
+          </h1>
+          {/* Rotating hero headline — decorative marketing copy, not the page H1 */}
+          <p className="font-serif text-left sm:text-center text-4xl md:text-5xl lg:text-7xl font-bold text-cream leading-tight mb-6 max-w-4xl mx-auto" style={{ animationDelay: "0.1s" }}>
             {currentSlide.title.split(" ").slice(0, -2).join(" ")}
             <br />
             <span className="text-gold">{currentSlide.title.split(" ").slice(-2).join(" ")}</span>
-          </h1>
+          </p>
 
           <p className="text-left sm:text-center text-base sm:text-lg md:text-xl text-cream/70 max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animationDelay: "0.2s" }}>
             {currentSlide.subtitle}

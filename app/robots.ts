@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://truvisory.fr/sitemap.xml",
+    sitemap: "https://www.truvisory.fr/sitemap.xml",
   };
 }

@@ -29,10 +29,11 @@ from this file alone. Every piece is given as a generic **Template** plus a real
 9. [Page integration](#9-page-integration)
 10. [Images](#10-images)
 11. [Push content to WordPress](#11-push-content-to-wordpress)
-12. [Wiring (package.json, next.config, env)](#12-wiring)
-13. [Migration steps (static → dynamic)](#13-migration-steps-static--dynamic)
-14. [Gotchas & decisions](#14-gotchas--decisions)
-15. [Checklist](#15-checklist)
+12. [On-demand revalidation (WordPress → host webhook)](#12-on-demand-revalidation-wordpress--host-webhook)
+13. [Wiring (package.json, next.config, env)](#13-wiring)
+14. [Migration steps (static → dynamic)](#14-migration-steps-static--dynamic)
+15. [Gotchas & decisions](#15-gotchas--decisions)
+16. [Checklist](#16-checklist)
 
 ---
 
@@ -129,6 +130,10 @@ WORDPRESS_HOSTNAME=your-site.com          # for next/image remotePatterns
 # Content push (npm run wp:push) — WordPress Application Password
 WP_USERNAME=your-wp-login
 WP_APP_PASSWORD=xxxx xxxx xxxx xxxx xxxx xxxx
+
+# On-demand revalidation (§12) — shared secret guarding /api/revalidate.
+# Also set this in your host's env (e.g. Vercel) and redeploy.
+REVALIDATE_SECRET=generate-a-long-random-string
 
 # Contact form email (optional, if you have one)
 GMAIL_USER=you@gmail.com
@@ -627,7 +632,104 @@ empty, and `getHeroSection()` returned a clean 3-item array.
 
 ---
 
-## 12. Wiring
+## 12. On-demand revalidation (WordPress → host webhook)
+
+With ISR (§9, `revalidate = 3600`) production keeps serving the cached page for up to an hour after a
+WordPress edit. To make edits appear within **seconds**, expose a secret-protected revalidation
+endpoint and have WordPress call it on every save.
+
+### 12.1 The endpoint (Next.js)
+
+Create `app/api/revalidate/route.ts`. On Next.js 16 use `revalidatePath` for ISR pages
+(`revalidateTag` there requires a cache-life profile and targets the `"use cache"` system — not what
+a `fetch`-based ISR page needs).
+
+```ts
+import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
+
+function handle(req: NextRequest) {
+  const secret = req.nextUrl.searchParams.get("secret");
+  if (!process.env.REVALIDATE_SECRET || secret !== process.env.REVALIDATE_SECRET) {
+    return NextResponse.json({ revalidated: false, error: "Invalid secret" }, { status: 401 });
+  }
+  const path = req.nextUrl.searchParams.get("path") || "/";
+  revalidatePath(path);
+  return NextResponse.json({ revalidated: true, path, now: Date.now() });
+}
+export async function POST(req: NextRequest) { return handle(req); }
+export async function GET(req: NextRequest)  { return handle(req); } // handy for a browser test
+```
+
+Add `REVALIDATE_SECRET` to `.env.local` **and** to your host (Vercel → Settings → Environment
+Variables), then redeploy. Generate one with `node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"`.
+
+Test it directly: `GET https://<PROD_DOMAIN>/api/revalidate?secret=<secret>` → `{"revalidated":true,…}`;
+a wrong/missing secret → `401`.
+
+### 12.2 The WordPress hook
+
+Store the secret as a `wp-config.php` constant (keeps it out of the DB), then add a snippet via the
+**Code Snippets** plugin (Snippets → Add New → PHP, "Run everywhere" → Activate). It fires on save of
+your CPT only (`save_post_<cpt>`).
+
+`wp-config.php` (above "That's all, stop editing"):
+```php
+define('MYPROJECT_REVALIDATE_SECRET', 'your-long-random-secret');
+```
+
+Snippet:
+```php
+add_action('save_post_myproject', function ($post_id, $post) {   // your CPT slug
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) return;
+    if ($post->post_status !== 'publish') return;
+
+    $secret = defined('MYPROJECT_REVALIDATE_SECRET') ? MYPROJECT_REVALIDATE_SECRET : '';
+    if (!$secret) return;
+
+    $domain = 'https://www.example.com'; // ⚠️ NO trailing slash — see gotcha below
+    $url = $domain . '/api/revalidate?secret=' . rawurlencode($secret);
+
+    wp_remote_post($url, array('blocking' => false, 'timeout' => 5));
+}, 10, 2);
+```
+
+### 12.3 The double-slash gotcha (this WILL bite you)
+
+If `$domain` ends in `/` you build `https://www.example.com//api/revalidate`. Next.js answers a
+`//api/...` path with a **308 redirect** to the single-slash form — but `wp_remote_post` with
+`blocking => false` does **not follow redirects**, so the real handler is never hit and nothing
+revalidates. The snippet looks like it's working (no error) but prod stays stale.
+
+**Fix:** no trailing slash on `$domain` (or no leading slash on the path) — exactly one slash
+between host and `/api/revalidate`.
+
+To verify which URL is actually being called, temporarily set `blocking => true` and log the result:
+```php
+$resp = wp_remote_post($url, array('blocking' => true, 'timeout' => 15));
+error_log('[REVALIDATE] ' . (is_wp_error($resp)
+    ? $resp->get_error_message()
+    : wp_remote_retrieve_response_code($resp) . ' ' . wp_remote_retrieve_body($resp)));
+```
+A healthy call logs `200 {"revalidated":true,…}`. A `308` means the double-slash bug; a `WP_Error`
+means the WP host blocks outbound HTTP to your domain.
+
+### 12.4 Verify end-to-end
+1. Edit the page in WP → Update (don't trigger revalidate manually).
+2. Re-fetch prod: its CDN cache **age resets to ~0** and the new content shows within seconds.
+   (Check `x-vercel-cache` / `age` response headers — a stale page keeps a growing `age`.)
+
+> `npm run wp:push` writes via REST and does **not** fire the admin `save_post` hook. After a push,
+> hit the revalidate URL once, or rely on the hourly ISR.
+
+**Example (Truvisory):** the snippet fired on every save but used
+`$domain = 'https://www.truvisory.fr/'` → it called `…fr//api/revalidate` → 308 → prod never updated.
+Removing the trailing slash fixed it; edits now appear in seconds.
+
+---
+
+## 13. Wiring
 
 **`package.json`** — add the script and the `tsx` dev dependency:
 ```jsonc
@@ -652,7 +754,7 @@ images: {
 
 ---
 
-## 13. Migration steps (static → dynamic)
+## 14. Migration steps (static → dynamic)
 
 The site stays functional at every step.
 
@@ -668,7 +770,7 @@ The site stays functional at every step.
 
 ---
 
-## 14. Gotchas & decisions
+## 15. Gotchas & decisions
 
 - **"unknown type" on import** → the ACF JSON needs the full per-field scaffold at every depth.
   The generator (§7) handles it; never hand-write a minimal JSON.
@@ -691,7 +793,7 @@ The site stays functional at every step.
 
 ---
 
-## 15. Checklist
+## 16. Checklist
 
 **WordPress**
 - [ ] CPT registered with `show_in_rest => true`
@@ -716,6 +818,12 @@ The site stays functional at every step.
 - [ ] REST round-trip matches the mock (lists as `_1/_2/…` objects)
 - [ ] `npm run dev` renders WP content (no `[wp-fetch] … using mock` warning)
 - [ ] Images set in WP admin appear; re-running the push doesn't clear them
+
+**On-demand revalidation (§12)**
+- [ ] `app/api/revalidate/route.ts` added; `REVALIDATE_SECRET` in `.env.local` AND host env (redeployed)
+- [ ] `GET /api/revalidate?secret=…` → 200; wrong secret → 401
+- [ ] WP-config secret constant + Code Snippets hook on `save_post_<cpt>`, **no trailing slash** on `$domain`
+- [ ] Editing the page in WP updates prod within seconds (CDN `age` resets)
 
 **Multi-lang only**
 - [ ] Section keys suffixed `_<locale>` in types, mock, generator, push, and extractors

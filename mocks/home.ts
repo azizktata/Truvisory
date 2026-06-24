@@ -42,7 +42,7 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
       heading_part1: "Conformité, Gouvernance &",
       heading_part2: "Performance Financière",
       subheading:
-        "TRUV est un cabinet indépendant d'audit, d'externalisation de processus et de conseil, accompagnant les entreprises dans leurs enjeux stratégiques.",
+        "TRUVISORY est un cabinet indépendant d'expertise comptable, d'audit légal (commissaire aux comptes), de comptabilité externalisée et de conseil, accompagnant les PME et TPE en France et en Tunisie dans leurs enjeux stratégiques.",
       services: [
         {
           name: "Audit & Assurance",
@@ -85,10 +85,10 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
 
     sectorssection: {
       section_label: "Domaines d'expertise",
-      heading_part1: "Des secteurs d'activité",
-      heading_part2: "variés",
+      heading_part1: "Un expert-comptable pour tous vos",
+      heading_part2: "secteurs d'activité",
       subheading:
-        "Nous accompagnons des entreprises issues de secteurs variés, en adaptant notre expertise aux spécificités de chaque industrie.",
+        "Cabinet d'expertise comptable et d'audit accompagnant les entreprises de secteurs variés, en adaptant notre expertise aux spécificités de chaque industrie.",
       sectors: [
         { name: "Industrie" },
         { name: "Énergie" },
@@ -104,10 +104,10 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
 
     servicessection: {
       section_label: "Nos Services",
-      heading_part1: "Des solutions adaptées à",
-      heading_part2: "vos besoins",
+      heading_part1: "Expertise comptable, fiscale et sociale pour",
+      heading_part2: "PME et TPE",
       subheading:
-        "Une gamme complète de services pour accompagner les PME et TPE dans leur développement, leur conformité et leur performance financière.",
+        "Création d'entreprise, comptabilité externalisée, conseil fiscal, gestion de paie et accompagnement international (TRE) pour les PME et TPE en France et en Tunisie.",
       services: [
         {
           id: "creation-entreprises",
