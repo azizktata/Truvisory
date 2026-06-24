@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import type { HeroSection } from "@/lib/wp-types";
+import { resolveWPImageUrl } from "@/lib/wp-types";
 
 interface HeroProps {
   data: HeroSection;
@@ -47,18 +48,21 @@ const Hero = ({ data, phone, whatsapp }: HeroProps) => {
       <div className="absolute inset-0">
         <div ref={emblaRef} className="overflow-hidden h-full">
           <div className="flex h-full">
-            {data.slides.map((slide, index) => (
-              <div
-                key={index}
-                className="flex-[0_0_100%] min-w-0 relative h-full"
-              >
+            {data.slides.map((slide, index) => {
+              const imageUrl = resolveWPImageUrl(slide.image);
+              return (
                 <div
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700"
-                  style={{ backgroundImage: `url(${slide.image})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/90 via-navy-deep/75 to-navy-medium/85" />
-              </div>
-            ))}
+                  key={index}
+                  className="flex-[0_0_100%] min-w-0 relative h-full"
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700"
+                    style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : undefined}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-navy-deep/90 via-navy-deep/75 to-navy-medium/85" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
