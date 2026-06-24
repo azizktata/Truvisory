@@ -8,7 +8,7 @@ export const homeMock: WPPostResponse<LandingPageACF> = {
     herosection: {
       slides: [
         {
-          title: "L'excellence au service de votre réussite",
+          title: "Votre réussite, notre expertise",
           subtitle:
             "Expertise comptable, audit et conseil stratégique au service des PME et TPE françaises, avec une vision internationale.",
           image:
